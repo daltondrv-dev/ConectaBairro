@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "nome": "Maria das Doces",
+    "profissao": "Doceira Artesanal",
+    "descricao": "Brigadeiros, bolos e sobremesas caseiras para eventos e encomendas.",
+    "telefone": "5541999887766",
+    "urlFoto": "https://via.placeholder.com/240x160.png?text=Doceira"
+  },
+  {
+    "id": "2",
+    "nome": "João Silva",
+    "profissao": "Eletricista",
+    "descricao": "Serviços elétricos residenciais: reparos, instalações e manutenção.",
+    "telefone": "5541999776655",
+    "urlFoto": "https://via.placeholder.com/240x160.png?text=Eletricista"
+  }
+]

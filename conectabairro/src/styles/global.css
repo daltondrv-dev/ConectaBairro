@@ -1,0 +1,330 @@
+/* ============================================
+   VARIÁVEIS CSS (Design System)
+   ============================================ */
+:root {
+  /* Cores - ODS 8 (Trabalho Digno e Crescimento Econômico) */
+  --green-primary: #2e7d32;      /* Verde sustentável principal */
+  --green-light: #4caf50;         /* Verde claro */
+  --green-whatsapp: #25d366;      /* Destaque WhatsApp */
+  
+  /* Neutros */
+  --bg: #ffffff;                  /* Fundo principal */
+  --bg-light: #f5f5f5;            /* Fundo secundário */
+  --text-dark: #333333;           /* Texto primário */
+  --text-muted: #666666;          /* Texto secundário */
+  --border: #e0e0e0;              /* Bordas */
+  
+  /* Tipografia */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-size-base: 16px;
+  --font-size-sm: 14px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 28px;
+  
+  /* Espaçamento */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 20px;
+  --spacing-xl: 24px;
+}
+
+/* ============================================
+   RESET & ESTILOS BASE
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-dark);
+  background-color: var(--bg);
+  line-height: 1.6;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: var(--font-size-2xl);
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   LAYOUT UTILITÁRIO
+   ============================================ */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin: var(--spacing-lg) 0;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.site-header {
+  background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-light) 100%);
+  color: white;
+  padding: var(--spacing-xl) var(--spacing-md);
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15);
+}
+
+.site-header h1 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 700;
+}
+
+.site-header .tagline {
+  font-size: var(--font-size-base);
+  opacity: 0.95;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  height: 100%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(46, 125, 50, 0.15);
+  transform: translateY(-4px);
+}
+
+.card-photo {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--green-light) 0%, var(--green-primary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.card-body {
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-name {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-xs);
+}
+
+.card-profissao {
+  font-size: var(--font-size-sm);
+  color: var(--green-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-md);
+}
+
+.card-desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-lg);
+  flex-grow: 1;
+  line-height: 1.5;
+}
+
+/* ============================================
+   BOTÃO WhatsApp
+   ============================================ */
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  background: var(--green-whatsapp);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  border: 2px solid transparent;
+}
+
+.btn-whatsapp:hover {
+  background: #1faa50;
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:active {
+  transform: scale(0.98);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--bg-light);
+  padding: var(--spacing-xl) var(--spacing-md);
+  text-align: center;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-xl);
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================
+   LOADING, ERROR & EMPTY STATES
+   ============================================ */
+.loading-state,
+.error-state,
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  margin: var(--spacing-xl) 0;
+  border-radius: 8px;
+  font-size: var(--font-size-lg);
+}
+
+.loading-state {
+  background: #e8f5e9;
+  color: var(--green-primary);
+  border-left: 4px solid var(--green-primary);
+}
+
+.loading-state p {
+  animation: pulse 1.5s ease-in-out infinite;
+  margin: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.error-state {
+  background: #ffebee;
+  color: #c62828;
+  border-left: 4px solid #c62828;
+}
+
+.error-state p {
+  margin: 0;
+}
+
+.empty-state {
+  background: #f5f5f5;
+  color: var(--text-muted);
+  border-left: 4px solid var(--border);
+}
+
+.empty-state p {
+  margin: 0;
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+@media (max-width: 768px) {
+  :root {
+    --font-size-2xl: 24px;
+    --font-size-xl: 20px;
+    --spacing-lg: 16px;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .site-header {
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+  
+  .site-header h1 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .card-photo {
+    height: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-size-base: 14px;
+    --spacing-md: 12px;
+    --spacing-lg: 16px;
+  }
+  
+  .site-header .tagline {
+    font-size: var(--font-size-sm);
+  }
+}
