@@ -4,7 +4,7 @@ const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSw6ldiG8GDgnL2
 
 /**
  * Busca a lista de profissionais a partir do Google Sheets (CSV)
- * @returns {Promise<Array>} Array de profissionais com id, nome, profissao, descricao, telefone, urlFoto
+ * @returns {Promise<Array>} Array de profissionais com id, nome_negocio, profissao, descricao, telefone
  * @throws {Error} Se houver erro na requisição ou parsing
  */
 export async function fetchProfissionais() {
@@ -20,19 +20,41 @@ export async function fetchProfissionais() {
     return new Promise((resolve, reject) => {
       Papa.parse(csvText, {
         header: true,
+        transformHeader: (header) => {
+          return header
+            .toLowerCase()
+            .trim()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '') // remove acentos
+            .replace(/[^a-z0-9]+/g, '_')     // substitui barras, espaços e símbolos por _
+            .replace(/^_+|_+$/g, '');        // remove _ do início/fim
+        },
         skipEmptyLines: true,
         complete: (results) => {
-          // Validar e mapear dados
+          console.log('Primeiro registro parsed:', results.data[0]);
+
+          const getFieldValue = (row, keywords) => {
+            const keys = Object.keys(row);
+            for (const kw of keywords) {
+              const matchedKey = keys.find(k => k.includes(kw));
+              if (matchedKey && row[matchedKey] && row[matchedKey].toString().trim() !== '') {
+                return row[matchedKey].toString().trim();
+              }
+            }
+            return '';
+          };
+
           const profissionais = results.data.map((row, index) => ({
             id: row.id || String(index + 1),
-            nome: row.nome || '',
-            profissao: row.profissao || '',
-            descricao: row.descricao || '',
-            telefone: row.telefone || '',
-            urlFoto: row.urlFoto || ''
-          }))
+            nome_negocio: getFieldValue(row, ['nome', 'negocio', 'empresa', 'profissional']) || "Empreendedor Local",
+            profissao: getFieldValue(row, ['profissao', 'categoria', 'ramo', 'servico']) || "Profissional Local",
+            cidade: getFieldValue(row, ['cidade', 'municipio']) || "",
+            bairro: getFieldValue(row, ['bairro', 'regiao']) || "",
+            descricao: getFieldValue(row, ['descricao', 'detalhe', 'resumo', 'sobre']) || "",
+            telefone: getFieldValue(row, ['telefone', 'whats', 'celular', 'contato', 'num']) || ""
+          }));
           
-          resolve(profissionais)
+          resolve(profissionais);
         },
         error: (error) => {
           reject(new Error(`Erro ao fazer parse do CSV: ${error.message}`))

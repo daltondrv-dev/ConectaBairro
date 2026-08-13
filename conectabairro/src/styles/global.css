@@ -1,33 +1,34 @@
 /* ============================================
-   VARIÁVEIS CSS (Design System)
+   VARIÁVEIS CSS (Design System Moderno)
    ============================================ */
 :root {
-  /* Cores - ODS 8 (Trabalho Digno e Crescimento Econômico) */
-  --green-primary: #2e7d32;      /* Verde sustentável principal */
-  --green-light: #4caf50;         /* Verde claro */
+  /* Cores - Modern UI */
+  --green-primary: #10b981;       /* Verde esmeralda (destaque/cadastro) */
   --green-whatsapp: #25d366;      /* Destaque WhatsApp */
+  --green-whatsapp-hover: #20bd5a;
   
-  /* Neutros */
-  --bg: #ffffff;                  /* Fundo principal */
-  --bg-light: #f5f5f5;            /* Fundo secundário */
-  --text-dark: #333333;           /* Texto primário */
-  --text-muted: #666666;          /* Texto secundário */
-  --border: #e0e0e0;              /* Bordas */
+  /* Neutros e Fundo */
+  --bg: #f8fafc;                  /* Fundo super claro */
+  --bg-card: #ffffff;             /* Fundo do card */
+  --text-dark: #0f172a;           /* Texto forte (títulos) */
+  --text-base: #334155;           /* Texto base */
+  --text-muted: #64748b;          /* Texto secundário */
+  --border: #e2e8f0;              /* Bordas sutis */
   
   /* Tipografia */
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-family: 'Inter', 'Roboto', system-ui, -apple-system, sans-serif;
   --font-size-base: 16px;
   --font-size-sm: 14px;
   --font-size-lg: 18px;
-  --font-size-xl: 24px;
+  --font-size-xl: 22px;
   --font-size-2xl: 28px;
   
   /* Espaçamento */
   --spacing-xs: 4px;
   --spacing-sm: 8px;
   --spacing-md: 16px;
-  --spacing-lg: 20px;
-  --spacing-xl: 24px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
 }
 
 /* ============================================
@@ -46,32 +47,21 @@ html {
 body {
   font-family: var(--font-family);
   font-size: var(--font-size-base);
-  color: var(--text-dark);
+  color: var(--text-base);
   background-color: var(--bg);
   line-height: 1.6;
 }
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
+  color: var(--text-dark);
   line-height: 1.3;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-h1 {
-  font-size: var(--font-size-2xl);
-}
-
-h2 {
-  font-size: var(--font-size-xl);
-}
-
-h3 {
-  font-size: var(--font-size-lg);
-}
-
-p {
-  margin: 0;
-}
+h1 { font-size: var(--font-size-2xl); font-weight: 800; }
+h2 { font-size: var(--font-size-xl); }
+h3 { font-size: var(--font-size-lg); }
 
 a {
   color: inherit;
@@ -102,67 +92,87 @@ img {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-lg);
-  margin: var(--spacing-lg) 0;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
 /* ============================================
    HEADER
    ============================================ */
 .site-header {
-  background: linear-gradient(135deg, var(--green-primary) 0%, var(--green-light) 100%);
+  background: linear-gradient(135deg, #0f172a, #1e293b);
   color: white;
   padding: var(--spacing-xl) var(--spacing-md);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.header-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(46, 125, 50, 0.15);
 }
 
 .site-header h1 {
-  font-size: var(--font-size-2xl);
+  color: white;
   margin-bottom: var(--spacing-sm);
-  font-weight: 700;
 }
 
 .site-header .tagline {
   font-size: var(--font-size-base);
-  opacity: 0.95;
-  font-weight: 300;
+  color: #cbd5e1;
+  font-weight: 400;
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto var(--spacing-lg);
+}
+
+/* ============================================
+   BOTÃO CADASTRO (Header)
+   ============================================ */
+.btn-cadastro {
+  display: inline-block;
+  background-color: var(--green-primary);
+  color: #ffffff;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 25px; /* Estilo pill */
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-cadastro:hover {
+  background-color: #059669;
+  box-shadow: 0 6px 8px -1px rgba(16, 185, 129, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-cadastro:active {
+  transform: translateY(0);
 }
 
 /* ============================================
    CARDS
    ============================================ */
 .card {
-  background: var(--bg);
+  background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  height: 100%;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px rgba(46, 125, 50, 0.15);
-  transform: translateY(-4px);
-}
-
-.card-photo {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  background: linear-gradient(135deg, var(--green-light) 0%, var(--green-primary) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 48px;
-  font-weight: 700;
+  box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
 }
 
 .card-body {
@@ -173,19 +183,35 @@ img {
 }
 
 .card-name {
-  font-size: var(--font-size-lg);
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: var(--spacing-xs);
+  text-align: left;
+  border: none;
+  padding-bottom: 0;
 }
 
 .card-profissao {
-  font-size: var(--font-size-sm);
-  color: var(--green-primary);
+  background: #f1f5f9;
+  color: #475569;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: var(--spacing-md);
+  display: inline-block;
+  margin-bottom: 8px;
+  align-self: flex-start;
+}
+
+.location-badge {
+  font-size: 0.85rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  margin-bottom: 12px;
+  font-weight: 500;
 }
 
 .card-desc {
@@ -193,51 +219,99 @@ img {
   color: var(--text-muted);
   margin-bottom: var(--spacing-lg);
   flex-grow: 1;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* ============================================
    BOTÃO WhatsApp
    ============================================ */
 .btn-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-sm);
+  display: block;
+  width: 100%;
   background: var(--green-whatsapp);
   color: white;
-  padding: var(--spacing-sm) var(--spacing-lg);
+  padding: 12px var(--spacing-md);
   border-radius: 8px;
   font-weight: 600;
-  font-size: var(--font-size-sm);
+  font-size: var(--font-size-base);
   transition: all 0.3s ease;
   text-decoration: none;
-  width: 100%;
   text-align: center;
-  border: 2px solid transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .btn-whatsapp:hover {
-  background: #1faa50;
-  transform: scale(1.02);
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  background: var(--green-whatsapp-hover);
+  transform: translateY(-1px);
 }
 
 .btn-whatsapp:active {
-  transform: scale(0.98);
+  transform: translateY(1px);
+}
+
+.btn-whatsapp-disabled,
+.btn-whatsapp:disabled {
+  background: #cbd5e1;
+  color: #64748b;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-whatsapp-disabled:hover,
+.btn-whatsapp:disabled:hover {
+  background: #cbd5e1;
+  transform: none;
 }
 
 /* ============================================
-   FOOTER
+   FOOTER & SUPORTE
    ============================================ */
 .footer {
-  background: var(--bg-light);
-  padding: var(--spacing-xl) var(--spacing-md);
+  margin: 3rem auto 2rem;
   text-align: center;
+  max-width: 700px;
+  padding: 0 1rem;
+}
+
+.support-banner {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+  margin-bottom: 1.5rem;
+}
+
+.support-text {
+  font-size: var(--font-size-base);
+  color: var(--text-base);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.btn-suporte {
+  display: inline-block;
+  background-color: #f1f5f9;
+  color: #334155;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.btn-suporte:hover {
+  background-color: #25D366;
+  color: white;
+  border-color: #25D366;
+}
+
+.footer-credits {
   color: var(--text-muted);
   font-size: var(--font-size-sm);
-  margin-top: var(--spacing-xl);
-  border-top: 1px solid var(--border);
 }
 
 /* ============================================
@@ -249,14 +323,14 @@ img {
   text-align: center;
   padding: var(--spacing-xl) var(--spacing-md);
   margin: var(--spacing-xl) 0;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: var(--font-size-lg);
 }
 
 .loading-state {
-  background: #e8f5e9;
+  background: #f0fdf4;
   color: var(--green-primary);
-  border-left: 4px solid var(--green-primary);
+  border: 1px solid #bbf7d0;
 }
 
 .loading-state p {
@@ -270,23 +344,15 @@ img {
 }
 
 .error-state {
-  background: #ffebee;
-  color: #c62828;
-  border-left: 4px solid #c62828;
-}
-
-.error-state p {
-  margin: 0;
+  background: #fef2f2;
+  color: #ef4444;
+  border: 1px solid #fecaca;
 }
 
 .empty-state {
-  background: #f5f5f5;
+  background: #ffffff;
   color: var(--text-muted);
-  border-left: 4px solid var(--border);
-}
-
-.empty-state p {
-  margin: 0;
+  border: 1px solid var(--border);
 }
 
 /* ============================================
@@ -296,35 +362,26 @@ img {
   :root {
     --font-size-2xl: 24px;
     --font-size-xl: 20px;
+    --font-size-lg: 18px;
     --spacing-lg: 16px;
   }
   
   .grid {
     grid-template-columns: 1fr;
-    gap: var(--spacing-md);
+    gap: 1rem;
   }
   
   .site-header {
     padding: var(--spacing-lg) var(--spacing-md);
   }
   
-  .site-header h1 {
-    font-size: var(--font-size-xl);
-  }
-  
-  .card-photo {
-    height: 160px;
+  .header-container {
+    padding: 0 1rem;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --font-size-base: 14px;
-    --spacing-md: 12px;
-    --spacing-lg: 16px;
-  }
-  
-  .site-header .tagline {
-    font-size: var(--font-size-sm);
+    --font-size-base: 15px;
   }
 }

@@ -1,21 +1,18 @@
 import React from 'react'
 
 export default function Header() {
-  const GOOGLE_FORM_URL = "https://forms.gle/SEU_LINK_AQUI"; // Substitua pelo link real do forms
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSc4HaQ09ZQ_eaelGMWAtLr_ceY0R1JU7Ss7R8BHUwh2WdKyUA/viewform?usp=publish-editor";
 
   return (
     <header className="site-header">
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
-        <div>
-          <h1>ConectaBairro</h1>
-          <p className="tagline">Fortalecendo a economia local. Encontre os melhores profissionais do nosso bairro!</p>
-        </div>
+      <div className="header-container">
+        <h1>AcheiAqui</h1>
+        <p className="tagline">Encontre os melhores profissionais e negócios da sua região.</p>
         <a 
           href={GOOGLE_FORM_URL} 
           target="_blank" 
           rel="noopener noreferrer" 
           className="btn-cadastro"
-          style={{ backgroundColor: '#2E8B57', color: 'white', padding: '12px 20px', borderRadius: '8px', textDecoration: 'none', fontWeight: 'bold', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}
         >
           Quero me Cadastrar 📝
         </a>

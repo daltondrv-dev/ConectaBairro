@@ -3,6 +3,8 @@ import Header from './components/Header'
 import CardProfissional from './components/CardProfissional'
 import { fetchProfissionais } from './services/api'
 
+const SUPPORT_WHATSAPP = "5541996045690";
+
 export default function App(){
   const [profissionais, setProfissionais] = useState([])
   const [loading, setLoading] = useState(true)
@@ -57,7 +59,20 @@ export default function App(){
         )}
       </main>
       <footer className="footer">
-        <p>Projeto acadêmico de extensão — ConectaBairro (PUCPR)</p>
+        <div className="support-banner">
+          <p className="support-text">
+            Cadastrou seu negócio e precisa alterar ou excluir alguma informação?
+          </p>
+          <a 
+            href={`https://api.whatsapp.com/send?phone=${SUPPORT_WHATSAPP}&text=${encodeURIComponent("Olá! Sou um profissional cadastrado no AcheiAqui e preciso de ajuda com meus dados.")}`} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn-suporte"
+          >
+            📱 Falar com o suporte via WhatsApp
+          </a>
+        </div>
+        <p className="footer-credits">Projeto acadêmico de extensão — ConectaBairro (PUCPR)</p>
       </footer>
     </div>
   )
