@@ -22,12 +22,16 @@
 - [x] Adicionar estados de loading, error e empty
 - [x] Estilos para mensagens de status (loading/erro/vazio)
 
-## Fase 3 — Deploy 🚀 EM PROGRESSO
+## Fase 3 — Deploy ✅ CONCLUÍDA
 - [x] Ajustar URL WhatsApp API (`api.whatsapp.com/send`)
 - [x] Limpeza de telefone com regex (`.replace(/\D/g, '')`)
 - [x] Criar `vite.config.js` com `base: '/ConectaBairro/'`
 - [x] Instalar @vitejs/plugin-react e gh-pages
 - [x] Configurar scripts: `predeploy` e `deploy`
-- [ ] Testar build local
-- [ ] Fazer deploy no GitHub Pages
-- [ ] Validar URL pública: `https://usuario.github.io/ConectaBairro/`
+- [x] Testar build local
+- [x] Fazer deploy no GitHub Pages
+- [x] Validar URL pública: `https://usuario.github.io/ConectaBairro/`
+
+## Fase 4 — Formulário de Cadastro ✅ CONCLUÍDA
+- [x] Adicionar botão "Quero me Cadastrar" no Header
+- [x] Direcionar para Google Forms em nova aba

@@ -66,20 +66,25 @@ conectabairro/
 
 ---
 
-## Roadmap (Fase 1 — Completa ✅)
+## Arquitetura do Sistema
+
+O projeto adota uma arquitetura *serverless* e de baixo custo, ideal para a extensão universitária:
+- **Frontend:** Desenvolvido em React consumindo dados via biblioteca `papaparse`.
+- **Banco de Dados (Leitura):** Planilha do Google Sheets publicada como CSV.
+- **Painel de Cadastro:** Google Forms. Os usuários se cadastram no formulário e os dados populam automaticamente a planilha do Google Sheets, atualizando o site em tempo real sem necessidade de backend dedicado.
+- **Hospedagem:** GitHub Pages (`gh-pages`).
+
+---
+
+## Roadmap (Concluído ✅)
 
 - ✅ Setup completo (Vite + React + JavaScript puro)
-- ✅ Estrutura base de pastas (`components/`, `data/`, `styles/`)
-- ✅ Documentação inicial (`docs/`)
-- ✅ Mock data com 2 profissionais
-- ✅ Componentes `Header` e `CardProfissional`
-- ✅ Renderização de cards com link WhatsApp
-
-### Próximas Fases
-
-- [ ] Fase 2: Integração com Google Sheets / CSV
-- [ ] Fase 2: Pesquisa e filtragem
-- [ ] Fase 3: Deploy no GitHub Pages
+- ✅ Estrutura base de pastas e mock data
+- ✅ Componentes dinâmicos com link WhatsApp otimizado
+- ✅ Integração com Google Sheets / CSV via PapaParse
+- ✅ Fallback de avatar para imagens vazias
+- ✅ Botão de Cadastro via Google Forms
+- ✅ Deploy no GitHub Pages configurado
 
 ---
 
