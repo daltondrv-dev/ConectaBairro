@@ -7,6 +7,7 @@ const SUPPORT_WHATSAPP = "5541996045690";
 
 export default function App(){
   const [profissionais, setProfissionais] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
@@ -28,9 +29,31 @@ export default function App(){
     loadProfissionais()
   }, [])
 
+  const filteredProfissionais = profissionais.filter((prof) => {
+    const search = searchTerm.toLowerCase()
+    if (!search) return true
+
+    const matchesNome = prof.nome_negocio && prof.nome_negocio.toLowerCase().includes(search)
+    const matchesProfissao = prof.profissao && prof.profissao.toLowerCase().includes(search)
+    const matchesBairro = prof.bairro && prof.bairro.toLowerCase().includes(search)
+    const matchesCidade = prof.cidade && prof.cidade.toLowerCase().includes(search)
+
+    return matchesNome || matchesProfissao || matchesBairro || matchesCidade
+  })
+
   return (
     <div>
       <Header />
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-input"
+          aria-label="Buscar por profissão, nome, bairro ou cidade"
+          placeholder="🔍 Buscar por eletricista, doceira, bairro..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
       <main className="container">
         {loading && (
           <div className="loading-state">
@@ -44,17 +67,18 @@ export default function App(){
           </div>
         )}
         
-        {!loading && !error && profissionais.length === 0 && (
-          <div className="empty-state">
-            <p>Nenhum profissional encontrado no momento.</p>
-          </div>
-        )}
-        
-        {!loading && !error && profissionais.length > 0 && (
+        {!loading && !error && (
           <section className="grid" aria-live="polite" aria-label="Lista de profissionais">
-            {profissionais.map(p => (
-              <CardProfissional key={p.id} profissional={p} />
-            ))}
+            {filteredProfissionais.length > 0 ? (
+              filteredProfissionais.map(p => (
+                <CardProfissional key={p.id} profissional={p} />
+              ))
+            ) : (
+              <div className="empty-state">
+                <p>😕 Poxa, não encontramos ninguém com esse termo.</p>
+                <p>Tente buscar por outra profissão ou bairro!</p>
+              </div>
+            )}
           </section>
         )}
       </main>

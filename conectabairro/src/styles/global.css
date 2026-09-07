@@ -90,6 +90,31 @@ img {
   padding: 0 var(--spacing-md);
 }
 
+.search-container {
+  max-width: 600px;
+  margin: -20px auto 2rem;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 24px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 50px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: #10b981;
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -321,6 +346,10 @@ img {
 .error-state,
 .empty-state {
   text-align: center;
+  padding: 3rem 1rem;
+  font-size: 1.2rem;
+  grid-column: 1 / -1;
+  text-align: center;
   padding: var(--spacing-xl) var(--spacing-md);
   margin: var(--spacing-xl) 0;
   border-radius: 12px;
@@ -372,7 +401,7 @@ img {
   }
   
   .site-header {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: var(--spacing-lg) var(--spacing-md) var(--spacing-xl);
   }
   
   .header-container {
